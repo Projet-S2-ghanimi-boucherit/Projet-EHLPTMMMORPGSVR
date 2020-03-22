@@ -1,16 +1,24 @@
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
+package projetTutore;
 
-//EXTEND -> donc hÃ©rite de toute les methodes et attribues inutile de les rÃ©Ã©crire ici
+public class Vêtement extends Objet {
+	int protection;
 
-public class VÃªtement extends Objet {
-
-	 public VÃªtement() {
+	 public Vêtement() {
 	 	this.Consommable = false;
+	 	this.Nom = Nom;
+	 	this.protection = protection;
+	 	
 
-	 	//Ajoute les autre attribue en dessous (nom)
 
 	}
+	  public int getProtection() {
+		return this.protection;
+	}
+	public void setProtection(int nouvprotection) {
+		this.protection = nouvprotection;
+	}
 
-//EXTEND -> donc hÃ©rite de toute les methodes et attribues inutile de les rÃ©Ã©crire ramasser, equipÃ©, desequiper
+//EXTEND -> donc hérite de toute les methodes et attribues inutile de les réécrire ramasser, equipé, desequiper
 
 }
+
