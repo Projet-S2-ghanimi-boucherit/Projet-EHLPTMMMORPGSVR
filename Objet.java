@@ -16,25 +16,6 @@ public class  Objet {
     	//donc ce sera pour la v2
 
     }
-    	
-    	
-   
-    	 // java doc de l'arraylist : https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
-    	// dans la classe personnage il y a comme attribut:
-    	// public ArrayList<Objet> ListObjet;
-    	//Regarde la classe TestObjet pour que tu sache quoi faire
-
-	public void Desequiper(Objet obj){
-        this.remove(obj);
-    	//Tu retire l'objet dans l'arrayList du personnage
-    	// java doc de l'arraylist : https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
-
-    }
-
-    private void remove(Objet obj) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	public String toString(){
