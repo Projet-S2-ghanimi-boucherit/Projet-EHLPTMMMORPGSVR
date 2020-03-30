@@ -1,20 +1,15 @@
-package projetTutore;
-
 public class Potion extends Objet {
 	
-
-	public Potion() {
+	private boolean Consommable;
+	
+	public Potion(String nom) {
+		super(nom);
 		this.Consommable = true;
-		this.Nom = Nom;
-		
-		
-
-		//Ajoute les autre attribue en dessous (nom)
     }
 
     public void Soin() {
-    	int val=this.getPointDeVIe()+5;
-    	this.setPointDeVIe(val);
+    	int val = perso.getPointDeVIe()+5;
+    	perso.setPointDeVIe(val);
     	//soigne de X point de vie (voir le sujet du projet)
     	// Donc dabord int val = getPointDeVie() + X point
     	//puis appelle la methode setPointDeVIe(int value) sur un personnage
@@ -22,15 +17,18 @@ public class Potion extends Objet {
     }
 
     public void Molotov() {
-        int val=this.getPointDeVIe()-6;
-    	this.setPointDeVIe(val);
+        int val = perso.getPointDeVIe()-6;
+    	perso.setPointDeVIe(val);
     	//enleve de X point de vie (voir le sujet du projet)
     	// Donc dabord int val = getPointDeVie() - X point
     	//puis appelle la methode setPointDeVIe(int value) sur un personnage
     	//Tu fera sur le TestObjet pj.molotov();
     }
     
-
-//EXTEND -> donc hérite de toute les methodes et attribues inutile de les réécrire ramasser, equipé, desequiper
-
+    public Boolean getConsommable() {
+		return Consommable;
+	}
+    public void setConsommable(Boolean consommable) {
+		Consommable = consommable;
+	}
 }

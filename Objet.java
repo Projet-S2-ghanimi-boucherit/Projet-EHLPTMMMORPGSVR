@@ -1,18 +1,10 @@
-package projetTutore;
-import java.util.ArrayList;
 
- 
 public class  Objet {
 
     String Nom;
-    Personnage perso;
-    Boolean Consommable;
+    Personnage perso;    
     
-    
-    
-
-    public Objet(){
-    	this.Consommable = null;
+    public Objet(String Nom){
     	this.Nom = Nom;
     	//PAR DEFAUT CE SERA NULL
     	//Met tout les this à part personnage
@@ -24,10 +16,6 @@ public class  Objet {
     	//donc ce sera pour la v2
 
     }
-
-    public void Equiper(Objet obj){
-    	this.add(obj);
-    }
     	
     	
    
@@ -35,28 +23,25 @@ public class  Objet {
     	// dans la classe personnage il y a comme attribut:
     	// public ArrayList<Objet> ListObjet;
     	//Regarde la classe TestObjet pour que tu sache quoi faire
-    	
 
-
-    
-
-    public void Desequiper(Objet obj){
+	public void Desequiper(Objet obj){
         this.remove(obj);
     	//Tu retire l'objet dans l'arrayList du personnage
     	// java doc de l'arraylist : https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
 
     }
 
-    public String toString(){
+    private void remove(Objet obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public String toString(){
 		return Nom;
 
     }
-    public Boolean getConsommable() {
-		return Consommable;
-	}
-    public void setConsommable(Boolean consommable) {
-		Consommable = consommable;
-	}
+	
     public String getNom() {
 		return Nom;
 	}
@@ -70,5 +55,10 @@ public class  Objet {
 		this.perso = perso;
 	}
 
-} 
 
+	public void soin() {
+		// TODO Auto-generated method stub
+		
+	}
+
+} 
