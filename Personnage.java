@@ -33,7 +33,7 @@ public class Personnage {
     	
     	sc.close();
     	
-    	this.PointAction = 0;
+    	this.PointAction = 10;
     	this.Initiative = 0;
     	this.Attaque = 0;
     	this.Defense = 0;
@@ -51,21 +51,99 @@ public class Personnage {
     public void Equiper(Objet obj){
     	this.SacObjet.add(obj);
     }
+    
+    // DEBUT CODE LUNDI 6 AVRIL
 
-    public void seDeplacer() {
+    public boolean seDeplacer() {
+    	
+    	if (getPointAction() >= 2) {
+    		
+    		Scanner sc = new Scanner(System.in);
+    	    System.out.println("Saisissez la case où vous voulez vous déplacer : ");
+    	    
+    	    int position = sc.nextInt();
+    	    sc.close();
+    	        		
+    		int PA = getPointAction();
+    		int nouvPA = PA - 2;
+    		setPointAction(nouvPA);
+    		
+    		return true;
+    	}
+    	
+    	else {
+    		System.out.println("Vous n'avez pas assez de Point d'Action, veuiller choisir une autre action ou attendre d'avoir assez de point");
+    		return false;
+    	}
     }
-
-    public void attaquer() {
+    
+    
+    public boolean attaquer() {
+    	if (getPointAction() >= 3) {
+    		
+    		return true;
+    	}
+    	
+    	else {
+    		System.out.println("Vous n'avez pas assez de Point d'Action, veuiller choisir une autre action ou attendre d'avoir assez de point");
+    		return false;
+    	}
     }
-
-    public void useObject() {
+    
+    public void useObject(Objet o) {
     }
+    
 
     public void ChoixAction() {
+    	System.out.println("Veuillez choisir une action parmis, Attaquer : (A), Déplacer : (B), Utiliser un objet : (C).");
+
+    			Scanner sc = new Scanner(System.in);
+    			String A = sc.nextLine();
+    			sc.close();
+    			
+    			A = "d";
     }
 
-    public void AfficherPointDeVie() {
+    
+    public boolean isAlpha(String name) {
+        return name.matches("[a-zA-Z]+");
     }
+
+    public String AfficherPointDeVie() {
+    	
+    	if ( this.PointDeVie == 0 ) {
+    		
+    		String newline=System.getProperty("line.separator");
+    		return new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes mort..." + newline + "Fin de la partie");
+    	}
+    	else if ( this.PointDeVie >=79 ) {
+    		
+    		String newline=System.getProperty("line.separator");
+    		return new String ("Points de vie :" + this.PointDeVie + newline +"Votre niveau de blessure est nulle ou quasi nulle");
+    	}
+    	
+    	else if (this.PointDeVie >=59) {
+    		String newline=System.getProperty("line.separator");
+    		return new String ("Points de vie :" + this.PointDeVie + newline +"Votre niveau de blessure est superficielle");
+    	}
+    	
+    	else if (this.PointDeVie >=39) {
+    		String newline=System.getProperty("line.separator");
+    		return new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes légèrment blessé");
+    	}
+    	
+    	else if (this.PointDeVie >=19) {
+    		String newline=System.getProperty("line.separator");
+    		return new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes gravement blessé");
+    	}
+    	
+    	else {
+    		String newline=System.getProperty("line.separator");
+    		return new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes actuellement inconscient et ne pouvez réaliser aucune action à moins d'être soigné");
+    	}
+    }
+    
+    // FIN CODE LUNDI 6 AVRIL
     
     public String toString() {
     	String newline=System.getProperty("line.separator");
