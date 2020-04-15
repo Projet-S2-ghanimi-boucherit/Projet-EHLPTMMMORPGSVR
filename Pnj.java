@@ -1,12 +1,12 @@
 package projetTutore;
 
-public class PJ extends Personnage {
-	private boolean Jouable;
+public class Pnj extends Personnage {
+    private boolean Jouable;
     //LA CLASSE HERITE DES ATTRIBUES INUTILE DES LES REECRIRES !!!
 
-    public PJ() {
+    public Pnj() {
     	super();
-    	this.Jouable = true;
+    	this.Jouable = false;
     }
 
     public String toString(){
@@ -25,6 +25,4 @@ public class PJ extends Personnage {
         return this.Jouable;
     }
 
- 
-
-}
+ } 

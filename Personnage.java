@@ -1,9 +1,13 @@
+package projetTutore;
+
 import java.util.ArrayList;
 import java.util.*;
 
 public class Personnage {
- 
+	private Personnage perso;
+	private int val;
     private int PointAction;
+    
     
     private int Force;
     private int Adresse;
@@ -30,7 +34,7 @@ public class Personnage {
     	
     	int endurance = sc.nextInt();
     	this.Endurance = endurance;
-    	
+     	
     	sc.close();
     	
     	this.PointAction = 10;
@@ -50,6 +54,18 @@ public class Personnage {
     
     public void Equiper(Objet obj){
     	this.SacObjet.add(obj);
+    	
+    }
+    
+    public void Soin() {
+    	int val = this.getPointDeVIe()+5;
+    			  this.setPointDeVIe(val);
+    }
+
+    public void Molotov() {
+        int val = this.getPointDeVIe()-6;
+    			  this.setPointDeVIe(val); 
+    	
     }
     
     // DEBUT CODE LUNDI 6 AVRIL
@@ -251,4 +267,4 @@ public class Personnage {
         this.Xp = value;
     }
 
-}
+} 

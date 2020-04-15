@@ -1,3 +1,5 @@
+package projetTutore;
+
 import java.util.ArrayList;
 
 public class TestPersonnage {
@@ -8,11 +10,12 @@ public static void main(String[] args){
 	
 	c1 = new ArrayList<Object>();
 	
-	Objet pot1 = new Potion("pot1");
-	Personnage p1 = new PJ ();
-	System.out.println(p1);
-	p1.Equiper(pot1);
-	System.out.println(p1);
-}
+	Objet pot2= new Potion("pot2");
+	Personnage P1 = new PJ ();
+	System.out.println(P1);
+	P1.Soin();
+	System.out.println(P1);
+
+	}
 
 }
