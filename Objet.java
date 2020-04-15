@@ -1,24 +1,31 @@
-
+package projetTutore;
+import java.util.ArrayList;
 public class  Objet {
 
-    String Nom;
-    Personnage perso;    
+private boolean Consommmable;
+private String Nom;
+private Personnage perso; 
+public ArrayList<Objet> SacObjet;
     
-    public Objet(String Nom){
-    	this.Nom = Nom;
+    public Objet(String nom){
+    	this.Nom = nom;
+    	this.Consommmable= false;
     	//PAR DEFAUT CE SERA NULL
     	//Met tout les this à part personnage
-    	}
-
-
-    public void Ramasser(){
+    }
+    
+  public void Ramasser(){
     	//là pour l'instant je vois pas quoi faire 
     	//donc ce sera pour la v2
+	  
 
-    }
-
-
-	public String toString(){
+  	}
+  	public void Jeter(int position) {
+  		SacObjet.remove(position);
+  		
+  		
+  	}
+  	public String toString(){
 		return Nom;
 
     }
@@ -35,11 +42,8 @@ public class  Objet {
     public void setPerso(Personnage perso) {
 		this.perso = perso;
 	}
+   
 
-
-	public void soin() {
-		// TODO Auto-generated method stub
-		
-	}
 
 } 
+
