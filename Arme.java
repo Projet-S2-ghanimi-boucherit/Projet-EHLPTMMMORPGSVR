@@ -1,4 +1,3 @@
-package projetTutore;
 
 public class Arme extends Objet {
 	private int Degats;
