@@ -1,11 +1,8 @@
-package projetTutore;
-
+//https://www-info.iutv.univ-paris13.fr/dokuwiki/doku.php?id=m2107:start
 import java.util.ArrayList;
 import java.util.*;
 
 public class Personnage {
-	private Personnage perso;
-	private int val;
     private int PointAction;
     
     
@@ -19,7 +16,7 @@ public class Personnage {
     
     private int PointDeVie;
     private int Xp;
-    public ArrayList<Objet> SacObjet;
+    private ArrayList<Objet> SacObjet;
 
     public Personnage() {
     	System.out.println("Répartissez 18 degrés entre les trois caractéristiques dans cette ordre: Force, Adresse, Endurance");
@@ -52,23 +49,22 @@ public class Personnage {
     
     // METHODES //
     
-    public void Equiper(Objet obj){
+    public void equiper(Objet obj){
     	this.SacObjet.add(obj);
     	
     }
     
-    public void Soin() {
+    public void soin() {
     	int val = this.getPointDeVIe()+5;
     			  this.setPointDeVIe(val);
     }
 
-    public void Molotov() {
+    public void molotov() {
         int val = this.getPointDeVIe()-6;
     			  this.setPointDeVIe(val); 
     	
     }
     
-    // DEBUT CODE LUNDI 6 AVRIL
 
     public boolean seDeplacer() {
     	
@@ -107,10 +103,25 @@ public class Personnage {
     }
     
     public void useObject(Objet o) {
+    	if (this.SacObjet.contains(o) && o.getType() == "soin") {
+    		this.soin();
+    	}
+    	
+    	else {
+    		this.molotov();
+    	}
+    	
+    	this.SacObjet.remove(o);
     }
     
 
-    public void ChoixAction() {
+    private boolean contains(Objet o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	public void ChoixAction() {
     	System.out.println("Veuillez choisir une action parmis, Attaquer : (A), Déplacer : (B), Utiliser un objet : (C).");
 
     			Scanner sc = new Scanner(System.in);
@@ -119,52 +130,65 @@ public class Personnage {
     			
     			A = "d";
     }
+    
+    public void affichePerso() {
+    	String newline=System.getProperty("line.separator");
+    	String s;
+    	s = newline + "Vos caractéristiques :" + newline + "- Force: " + this.Force + newline +"- Adresse : " + this.Adresse + newline +"- Endurance: " + this.Endurance + newline +"+ Initiative: " + this.Initiative + newline +"+ Attaque: " + this.Attaque + newline +"+ Defence: " + this.Defense + newline + newline +"Vos objets équipés : " + this.SacObjet ;
+    	System.out.println(s);
+    	this.AfficherPointDeVie();
+    	
+    }
 
     
     public boolean isAlpha(String name) {
         return name.matches("[a-zA-Z]+");
     }
 
-    public String AfficherPointDeVie() {
+    public void AfficherPointDeVie() {
     	
     	if ( this.PointDeVie == 0 ) {
     		
     		String newline=System.getProperty("line.separator");
-    		return new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes mort..." + newline + "Fin de la partie");
+    		String s = new String ( "Points de vie :" + this.PointDeVie + newline +"Vous êtes mort..." + newline + "Fin de la partie");
+    		System.out.println(s);
     	}
     	else if ( this.PointDeVie >=79 ) {
     		
     		String newline=System.getProperty("line.separator");
-    		return new String ("Points de vie :" + this.PointDeVie + newline +"Votre niveau de blessure est nulle ou quasi nulle");
+    		String s = new String ("Points de vie :" + this.PointDeVie + newline +"Votre niveau de blessure est nulle ou quasi nulle");
+    		System.out.println(s);
     	}
     	
     	else if (this.PointDeVie >=59) {
     		String newline=System.getProperty("line.separator");
-    		return new String ("Points de vie :" + this.PointDeVie + newline +"Votre niveau de blessure est superficielle");
+    		String s = new String ("Points de vie :" + this.PointDeVie + newline +"Votre niveau de blessure est superficielle");
+    		System.out.println(s);
     	}
     	
     	else if (this.PointDeVie >=39) {
     		String newline=System.getProperty("line.separator");
-    		return new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes légèrment blessé");
+    		String s = new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes légèrment blessé");
+    		System.out.println(s);
     	}
     	
     	else if (this.PointDeVie >=19) {
     		String newline=System.getProperty("line.separator");
-    		return new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes gravement blessé");
+    		String s =  new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes gravement blessé");
+    		System.out.println(s);
     	}
     	
     	else {
     		String newline=System.getProperty("line.separator");
-    		return new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes actuellement inconscient et ne pouvez réaliser aucune action à moins d'être soigné");
+    		String s = new String ("Points de vie :" + this.PointDeVie + newline +"Vous êtes actuellement inconscient et ne pouvez réaliser aucune action à moins d'être soigné");
+    		System.out.println(s);
     	}
     }
-    
-    // FIN CODE LUNDI 6 AVRIL
     
     public String toString() {
     	String newline=System.getProperty("line.separator");
     	String s;
-    	s = "Force: " + this.Force + ", Adresse : " + this.Adresse + ", Endurance: " + this.Endurance + newline +"Initiative: " + this.Initiative + ", Attaque: " + this.Attaque + ", Defence: " + this.Defense + newline +"Point de vie: " + this.PointDeVie + ", Point d'action: " + this.PointAction + " Point d'experience(XP): " + this.Xp + newline +"Sac: " + this.SacObjet ;
+    	s = newline + "Vos caractéristiques :" + newline + "- Force: " + this.Force + newline +"- Adresse : " + this.Adresse + newline +"- Endurance: " + this.Endurance + newline +"+ Initiative: " + this.Initiative + newline +"+ Attaque: " + this.Attaque + newline +"+ Defence: " + this.Defense + newline + newline +"Point de vie: " + this.PointDeVie + ", Point d'action: " + this.PointAction + ", Point d'experience(XP): " + this.Xp + newline +"Vos objets équipés : " + this.SacObjet ;
     	return s;
     }
     
