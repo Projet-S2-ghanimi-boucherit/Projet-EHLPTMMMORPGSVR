@@ -1,4 +1,3 @@
-package projetTutore;
 
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
@@ -13,17 +12,13 @@ public class Partie {
 
     public Personnage personnage;
     public int numPartie;
+    public CarteDuJeu carte;
 
-    public Partie(int UnNumPartie, Personnage unPersonnage) {
+    public Partie(int UnNumPartie, Personnage unPersonnage, CarteDuJeu uneCarte) {
     	this.numPartie  = UnNumPartie;
     	this.personnage = unPersonnage;
+    	this.carte = uneCarte;
     }
-    
-    
-    public static void main(String[] args) {
-    	Charger();
-		
-	}
 	
 	public static void Charger() {
 		
@@ -113,7 +108,10 @@ public class Partie {
 	
 	
 	
-	
+		public static void main(String[] args){
+		Sauvegarder();
+		 Charger();
+		}
 	
 	
 	
