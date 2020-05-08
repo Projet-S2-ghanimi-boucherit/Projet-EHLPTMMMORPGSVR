@@ -4,7 +4,7 @@ public class Arme extends Objet {
 	private boolean Consommable;
 	
 	public Arme (String nom, int Degats) {
-		super(nom);
+		super(nom, nom);
 		this.Consommable = false;
 		this.Degats=Degats;
 

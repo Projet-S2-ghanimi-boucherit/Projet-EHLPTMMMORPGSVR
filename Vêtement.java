@@ -5,7 +5,7 @@ public class Vêtement extends Objet {
 	private Personnage perso;
 	
 	 public Vêtement(String  nom, int protection) {
-		super(nom);
+		super(nom, nom);
 	 	this.Consommable = Consommable;
 	 	this.protection = protection;
 	 	
