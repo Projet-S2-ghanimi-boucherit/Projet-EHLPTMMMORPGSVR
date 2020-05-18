@@ -18,7 +18,7 @@ public static void main(String[] args){
 	System.out.println();
 	System.out.println();
 	
-	p1.seDeplacer();
+	carte1.seDeplacer(p1);
 	
 	System.out.println();
 	System.out.println();
