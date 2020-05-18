@@ -1,7 +1,7 @@
-//https://www-info.iutv.univ-paris13.fr/dokuwiki/doku.php?id=m2107:start
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.Scanner;
-import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Personnage {
@@ -72,31 +72,6 @@ public class Personnage {
     }
     
 
-    public boolean seDeplacer() {
-    	
-    	if (getPointAction() >= 2) {
-    	    System.out.println("Saisissez la case où vous voulez vous déplacer (Exemple: B-5)");
-    	    
-    	    Scanner sc1 = new Scanner(System.in);
-    	    String position = sc1.nextLine();
-    	    sc1.close();
-    	    convertPosition(position);
-    	    
-    	    //addTab(this.ligne, this.colonne, this);
-    	        		
-    		int PA = getPointAction();
-    		int nouvPA = PA - 2;
-    		setPointAction(nouvPA);
-    		
-    		return true;
-    	}
-    	
-    	else {
-    		System.out.println("Vous n'avez pas assez de Point d'Action, veuiller choisir une autre action ou attendre d'avoir assez de point");
-    		return false;
-    	}
-    }
-
 	public boolean attaquer() {
     	if (getPointAction() >= 3) {
     		
@@ -152,14 +127,25 @@ public class Personnage {
         return name.matches("[a-zA-Z]+");
     }
     
-    public void convertPosition(String position) {
+    public void convertPosition(String position, Hashtable<Integer, String> d) {
     	
     	final String decoupeur = "-";
+    	
         String mots[] = position.split(decoupeur);
-        
         String ligne = mots[1];
+        
         int nouvLigne = Integer.parseInt(ligne);
-        int nouvColonne = 1;
+        
+        int nouvColonne = 0;
+
+        for(Map.Entry entry: d.entrySet()){
+        	
+            if(mots[0].equals(entry.getValue())){
+            	
+                nouvColonne = (int) entry.getKey();
+                break; //breaking because its one to one map
+            }
+        }
         
         setLigne(nouvLigne);
         setColonne(nouvColonne);
@@ -223,6 +209,14 @@ public class Personnage {
     
     public void setColonne(int val) {
     	this.colonne = val;
+    }
+    
+    public int getLigne() {
+    	return this.ligne;
+    }
+    
+    public int getColonne() {
+    	return this.colonne;
     }
     
     public ArrayList<Objet> getSacObjet () {
