@@ -3,7 +3,7 @@ import java.util.Hashtable;
 
 public class CarteDuJeu {
     
-    public Cases[][] Tabcases;
+    private Cases[][] Tabcases;
     private String[] AlphColonne = { "A", "B", "C", "D", "E", "F"};
     private int[] NumLigne;
     private int n = 30;
@@ -32,10 +32,15 @@ public class CarteDuJeu {
     	 }
     	 
     	 
-    	 
+    	Personnage Monstre1 = new PNJ();
+    	this.addTab(5, 4, Monstre1);
+    	
+    	Personnage Monstre2 = new PNJ();
+    	this.addTab(1, 10, Monstre2);
+    	
     }
     
-    public void addTab (int colonne, int ligne, Object nouvObj){
+    public void addTab (int ligne, int colonne, Object nouvObj){
     	this.Tabcases[colonne][ligne].setObj(nouvObj);
     }
     
@@ -49,8 +54,11 @@ public class CarteDuJeu {
     		
              for (int j = 0;j < Tabcases[i].length;j++) {
             	 
-            	 if (this.Tabcases[i][j].getObj() instanceof Personnage) {
+            	 if (this.Tabcases[i][j].getObj() instanceof PJ) {
             		 System.out.print("    P   ");
+            	 }
+            	 else if (this.Tabcases[i][j].getObj() instanceof PNJ){
+            		 System.out.print("    M   ");
             	 }
             	 else {
             		 System.out.print("        ");
@@ -100,5 +108,6 @@ public class CarteDuJeu {
     public Hashtable<Integer, String> getDico() {
     	return this.dico;
     }
+
     
 }

@@ -1,29 +1,23 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class TestJeu {
 
 public static void main(String[] args){
 	
-	CarteDuJeu carte1 = new CarteDuJeu();
+	//int delay = 0; // Première exécution dans 5 secondes
+	//int period = 180000; // Répéter toutes les secondes
+	//Timer timer = new Timer(); 
+	//this.PointAction = timer.scheduleAtFixedRate(new TimerTask() {	public int run()  { int pa = setPointAction(getPointAction() * getInitiative()); return pa; } }, delay, period); }
 	
-	Personnage p1 = new PJ ();
-	Objet pot2 = new Potion("pot2","soin");
+	Joueur J1 = new Joueur();
+	Partie P1 = new Partie();
+	J1.add(P1);
+	System.out.println(J1);
 	
-	p1.equiper(pot2);
-	p1.affichePerso();
-	
-	System.out.println();
-	System.out.println();
-	
-	carte1.afficherCarte();
-	
-	System.out.println();
-	System.out.println();
-	
-	carte1.seDeplacer(p1);
-	
-	System.out.println();
-	System.out.println();
-	
-	carte1.afficherCarte();
+	System.out.println(P1);
+	P1.getCarte().afficherCarte();
+
 	
 	}
 
