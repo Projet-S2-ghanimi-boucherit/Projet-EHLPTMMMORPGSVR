@@ -44,7 +44,6 @@ public class Personnage {
     	this.PointDeVie = 100;
     	
     	SacObjet = new ArrayList<Objet>();
-    	
     }
     
     public int randNum(int min, int max) {
@@ -313,5 +312,5 @@ public class Personnage {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.Xp = value;
     }
-
+    
 } 
