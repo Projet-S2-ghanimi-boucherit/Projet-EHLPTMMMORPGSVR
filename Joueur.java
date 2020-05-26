@@ -1,29 +1,44 @@
 import java.util.ArrayList;
-import java.util.List;
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 public class Joueur {
-    public String Nom;
-    public ArrayList<Partie> listePartie;
+    private String nom;
+    private ArrayList<Partie> listePartie;
     
     public Joueur() {
-    	this.Nom = Nom;
-    	listePartie = new ArrayList<Partie>();
+    	this.nom = "J-X";
+    	this.setListePartie(new ArrayList<Partie>());
+    }
+    
+    public Joueur(String Nom) {
+    	this.nom = Nom;
+    	this.listePartie = new ArrayList<Partie>();
     }
 
-    String getNom() {
-        return this.Nom;
+    public String getNom() {
+        return this.nom;
     }
 
-    void setNom(String value) {
-        this.Nom = value;
+    public void setNom(String value) {
+        this.nom = value;
     }
 
     
-    public String toString() {
+    public ArrayList<Partie> getListePartie() {
+		return listePartie;
+	}
+
+	public void setListePartie(ArrayList<Partie> listePartie) {
+		this.listePartie = listePartie;
+	}
+
+	public String toString() {
     	
-    	String s = 'Pseudo: ' + this.Nom + ', Liste des parties :';
+    	String s = "Pseudo: " + this.nom ;
     	return s;
     }
+
+	public void add(Partie p) {
+		this.listePartie.add(p);
+	}
 
 }

@@ -1,4 +1,4 @@
-package projetTutore;
+
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -11,18 +11,22 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Partie {
-	public String Nom;
-	public Cases cases;
-	 public Cases[][] Tabcases;
-
-    public Personnage personnage;
-    public int numPartie;
-    public CarteDuJeu carte;
-    public Partie game;
-
-    public Partie(int UnNumPartie, Personnage unPersonnage, CarteDuJeu uneCarte) {
-    	this.numPartie  = numPartie;
-    	this.personnage = unPersonnage;
+	
+	private int numPartie;
+	private Personnage perso;
+    private CarteDuJeu carte;
+    
+    public Partie() {
+    	this.numPartie = 0;
+    	this.perso = new PJ();
+    	this.carte = new CarteDuJeu();
+    	
+    	this.carte.addTab(0, 0, this.perso);
+    }
+    
+    public Partie(int unNumPartie, Personnage unPersonnage, CarteDuJeu uneCarte) {
+    	this.numPartie = unNumPartie;
+    	this.perso = unPersonnage;
     	this.carte = uneCarte;
     }
 	
@@ -91,19 +95,33 @@ public class Partie {
 			}
 		   
 	   	}
-	
-	
-	
-	
 
-		public void main(String[] args){
-		Sauvegarder();
-		 Charger();
+		public int getNumPartie() {
+			return numPartie;
 		}
-	
-	
-	
-	}
+
+		public Personnage getPerso() {
+			return perso;
+		}
+
+		public void setPerso(Personnage perso) {
+			this.perso = perso;
+		}
+
+		public void setNumPartie(int numPartie) {
+			this.numPartie = numPartie;
+		}
+		
+		public CarteDuJeu getCarte() {
+			return this.carte;
+		}
+		
+		public String toString() {
+			String newline=System.getProperty("line.separator");
+			String s = newline + newline + "partie N°" + this.numPartie + newline + "Info personnage :" + this.perso + newline +  newline + newline;
+			return s;
+		}
+}
 	
 	
 	
