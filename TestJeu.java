@@ -1,3 +1,5 @@
+package projetTutore;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,6 +19,10 @@ public static void main(String[] args){
 	
 	System.out.println(P1);
 	P1.getCarte().afficherCarte();
+	P1.sauver();
+	P1.getCarte().seDeplacer(P1.getPerso());
+	P1.Charger();
+	
 
 	
 	}

@@ -1,3 +1,5 @@
+package projetTutore;
+
 public class Cases {
 
     private int ligne;

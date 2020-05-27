@@ -1,4 +1,7 @@
+package projetTutore;
+
 import java.util.Scanner;
+import java.util.Arrays;
 import java.util.Hashtable;
 
 public class CarteDuJeu {
@@ -102,12 +105,16 @@ public class CarteDuJeu {
     		return false;
     	}
     }
-    
+    public Cases[][] getTabcases() {
+		return Tabcases;
+	}
     
     
     public Hashtable<Integer, String> getDico() {
     	return this.dico;
     }
+    
+  
 
     
 }
