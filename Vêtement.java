@@ -1,3 +1,5 @@
+package projetTutore;
+
 
 public class Vêtement extends Objet {
 	private int protection;
