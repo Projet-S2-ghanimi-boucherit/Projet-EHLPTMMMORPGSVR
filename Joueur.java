@@ -1,3 +1,5 @@
+package projetTutore;
+
 import java.util.ArrayList;
 
 public class Joueur {
@@ -18,11 +20,9 @@ public class Joueur {
         return this.nom;
     }
 
-    public void setNom(String value) {
-        this.nom = value;
+    public void setNom(String Value) {
+    	this.nom=Value;
     }
-
-    
     public ArrayList<Partie> getListePartie() {
 		return listePartie;
 	}

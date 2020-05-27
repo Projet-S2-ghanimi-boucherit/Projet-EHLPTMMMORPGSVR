@@ -1,14 +1,23 @@
+package projetTutore;
+
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Partie {
 	
@@ -33,47 +42,41 @@ public class Partie {
 	public void Charger() {
 
 
-		    //lecture
-		    ArrayList<String> arraylist= new ArrayList<String>();
-		    try {
-		      FileInputStream fileIn = new FileInputStream("C://Users//Fareh//Desktop//Sauvegardes.txt");
-		      ObjectInputStream ois = new ObjectInputStream(fileIn);
-		      arraylist = (ArrayList) ois.readObject();
-		      ois.close();
-		      fileIn.close();
-		    } catch (FileNotFoundException e) {
-		      e.printStackTrace();
-		    } catch (IOException e) {
-		      e.printStackTrace();
-		    } catch (ClassNotFoundException e) {
-		      // TODO Auto-generated catch block
-		       e.printStackTrace();
-		    }
+		try{
+			InputStream flux=new FileInputStream("C://Users//Fareh//Desktop//Sauvegardes.txt"); 
+			InputStreamReader lecture=new InputStreamReader(flux);
+			BufferedReader buff=new BufferedReader(lecture);
+			String ligne;
+			while ((ligne=buff.readLine())!=null){
+				System.out.println(ligne);
+			}
+			buff.close(); 
+			}		
+			catch (Exception e){
+			System.out.println(e.toString());
+			}
+	}
+		
+	
+	
+	
+	public void sauver() {
+    	Writer save = null;
 
-		    System.out.println("Lire les données: \n");
-		    for(String o:arraylist)
-		      System.out.println(o);
-		  }
-		
-	
-	
-	
-		public  void Sauvegarder() {
-		
-			  try {
-			       FileOutputStream fileOut = new FileOutputStream("C://Users//Fareh//Desktop//Sauvegardes.txt");
-			       ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			       out.writeObject(this.carte);
-			       out.close();
-			       fileOut.close();
-			       System.out.println("\nSerialisation terminée avec succès...\n");
-			 
-			     } catch (FileNotFoundException e) {
-			       e.printStackTrace();
-			     } catch (IOException e) {
-			       e.printStackTrace();
-			     }
-			  }
+    	try {
+    	    save = new BufferedWriter(new OutputStreamWriter(
+    	          new FileOutputStream("C://Users//Fareh//Desktop//Sauvegardes.txt"), "utf-8"));
+    	    String s=""+this.numPartie+this.perso+this.Afficher2();
+    	    save.write(s );
+    	    System.out.println("Sauvegardé");
+    	} catch (IOException ex) {
+    	    // Report
+    	} finally {
+    	   try {save.close();} catch (Exception ex) {/*ignore*/}
+    	}
+    }
+
+
 			
 
 		public static void Creer() {
@@ -121,6 +124,18 @@ public class Partie {
 			String s = newline + newline + "partie N°" + this.numPartie + newline + "Info personnage :" + this.perso + newline +  newline + newline;
 			return s;
 		}
+
+		  public String Afficher2() {
+			    
+		    	return Arrays.toString(this.carte.getTabcases()); 
+		    	
+		    	
+		    	
+		    	
+		    	
+		    }
+
+
 }
 	
 	
