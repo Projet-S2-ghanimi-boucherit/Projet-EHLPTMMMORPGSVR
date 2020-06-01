@@ -1,4 +1,3 @@
-package projetTutore;
 
 
 public class Vêtement extends Objet {
@@ -8,7 +7,7 @@ public class Vêtement extends Objet {
 	
 	 public Vêtement(String  nom, int protection) {
 		super(nom, nom);
-	 	this.Consommable = Consommable;
+	 	this.setConsommable(true);
 	 	this.protection = protection;
 	 	
  
@@ -36,6 +35,12 @@ public class Vêtement extends Objet {
 	public String getNom() {
 		// TODO Auto-generated method stub
 		return super.getNom();
+	}
+	public boolean isConsommable() {
+		return Consommable;
+	}
+	public void setConsommable(boolean consommable) {
+		Consommable = consommable;
 	}
 	
 	
