@@ -1,4 +1,3 @@
-package projetTutore;
 
 
 import java.io.BufferedOutputStream;
@@ -18,19 +17,29 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 public class Partie {
 	
 	private int numPartie;
 	private Personnage perso;
     private CarteDuJeu carte;
+    private Scanner sc;
+    private Scanner sc1;
     
     public Partie() {
     	this.numPartie = 0;
     	this.perso = new PJ();
     	this.carte = new CarteDuJeu();
     	
+    	Objet soin= new Potion("soin1", "soin");
+    	this.perso.getSacObjet().add(soin);
+    	
     	this.carte.addTab(0, 0, this.perso);
+    	
+    	this.carte.afficherCarte();
+    	this.perso.affichePerso();
     }
     
     public Partie(int unNumPartie, Personnage unPersonnage, CarteDuJeu uneCarte) {
@@ -38,7 +47,48 @@ public class Partie {
     	this.perso = unPersonnage;
     	this.carte = uneCarte;
     }
-	
+    
+    public void ChoixAction() {
+    	
+    	//try {	System.out.println();
+    			System.out.println();
+    			System.out.println("Veuillez choisir une action parmis, Attaquer : (A), Déplacer : (D), Utiliser un objet : (O).");
+
+    			sc = new Scanner(System.in);
+    			String A = sc.nextLine();
+    			
+    			if (A.equals("A")) {
+    				
+    				this.getPerso().attaquer();
+    			}
+    			
+    			else if (A.equals("D")) {
+    				if (this.perso.getPointAction() <= 1) {
+    					this.getCarte().seDeplacer(this.getPerso());
+    				}
+    				else {
+    					System.out.println("Vous n'avez pas assez de PA");
+    				}
+    				
+    			}
+    			else if (A.equals("O")) {
+    				System.out.println("Veuillez saisir l'index de l'objet souhaitez");
+    				sc1 = new Scanner(System.in);
+        			int i = sc1.nextInt();
+        			
+    				this.getPerso().useObject(i);
+    			}
+    			this.getPerso().affichePerso();
+    			this.ChoixAction();
+    			//}
+    	//catch (Exception e) {
+    	//System.out.println();
+    		//System.out.println();
+    		//System.out.print("La saisie ne correspond à aucune action possible");
+    		//System.out.println("ou bien l'index de l'objet placer en paramètre ne correspond à aucun objet du sac");
+    	//}
+    }
+    
 	public void Charger() {
 
 
@@ -128,12 +178,11 @@ public class Partie {
 		  public String Afficher2() {
 			    
 		    	return Arrays.toString(this.carte.getTabcases()); 
-		    	
-		    	
-		    	
-		    	
-		    	
 		    }
+		  
+		  public Scanner getScanner() {
+			  return this.sc;
+		  }
 
 
 }
