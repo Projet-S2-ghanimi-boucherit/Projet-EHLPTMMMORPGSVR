@@ -1,4 +1,3 @@
-package projetTutore;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -43,7 +42,7 @@ public class Personnage {
     	this.Defense = 0;
     	
     	this.Xp = 0;
-    	this.PointDeVie = 100;
+    	this.PointDeVie = 98;
     	
     	SacObjet = new ArrayList<Objet>();
     }
@@ -62,12 +61,21 @@ public class Personnage {
     }
     
     public void soin() {
-    	int val = this.getPointDeVIe()+5;
-    			  this.setPointDeVIe(val);
+    	if (this.getPointDeVie() >= 95 && this.getPointDeVie() <= 99) {
+    		int dif = 100 - this.getPointDeVie();
+    		int val = dif + this.getPointDeVie();
+    		System.out.println("Restauration de "+ dif + " PV");
+    		this.setPointDeVIe(val);
+    	}
+    	else {
+    		int val = this.getPointDeVie() + 5;
+    		System.out.println("Restauration de 5 PV");
+    		this.setPointDeVIe(val);
+    	}
     }
 
     public void molotov() {
-        int val = this.getPointDeVIe()-6;
+        int val = this.getPointDeVie()-6;
     			  this.setPointDeVIe(val); 
     	
     }
@@ -85,65 +93,63 @@ public class Personnage {
     	}
     }
     
-    public void useObject(Objet o) {
-    	if (this.SacObjet.contains(o) && o.getType() == "soin") {
-    		this.soin();
-    	}
+    public void useObject(int i) {
     	
+    	if (this.SacObjet.contains(this.SacObjet.get(i)) && this.SacObjet.get(i).getType() == "soin") {
+    		int PV = getPointDeVie();
+    		
+    		if (PV != 100) {
+    			this.soin();
+    		}
+    		else {
+    			System.out.println("Vos points de vie sont au maximum");
+    		}
+    		
+    	}
+  
     	else {
-    		this.molotov();
+    		
+    		if(getPointDeVie() <= 6) {
+    			this.molotov();
+    			System.out.println("Vous n'avez plus de point de vie");
+    		}
+    		else {
+    			this.molotov();
+    		}
     	}
     	
-    	this.SacObjet.remove(o);
-    }
+    	this.SacObjet.remove(this.SacObjet.get(i));
     
-
-    private boolean contains(Objet o) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	public void ChoixAction() {
-    	System.out.println("Veuillez choisir une action parmis, Attaquer : (A), Déplacer : (B), Utiliser un objet : (C).");
-
-    			Scanner sc = new Scanner(System.in);
-    			String A = sc.nextLine();
-    			sc.close();
-    			
-    			A = "d";
     }
     
     public void affichePerso() {
+    	
     	String newline=System.getProperty("line.separator");
     	String s;
     	s = newline + "Vos caractéristiques :" + newline + "- Force: " + this.Force + newline +"- Adresse : " + this.Adresse + newline +"- Endurance: " + this.Endurance + newline +"+ Initiative: " + this.Initiative + newline +"+ Attaque: " + this.Attaque + newline +"+ Defence: " + this.Defense + newline + newline +"Vos objets équipés : " + this.SacObjet ;
+    	System.out.println();
+		System.out.println();
     	System.out.println(s);
     	this.AfficherPointDeVie();
     	
     }
 
-    
-    public boolean isAlpha(String name) {
-        return name.matches("[a-zA-Z]+");
-    }
-    
     public void convertPosition(String position, Hashtable<Integer, String> d) {
     	
     	final String decoupeur = "-";
     	
         String mots[] = position.split(decoupeur);
-        String ligne = mots[1];
+        String colonne = mots[1];
         
-        int nouvLigne = Integer.parseInt(ligne);
+        int nouvColonne = Integer.parseInt(colonne);
         
-        int nouvColonne = 0;
+        int nouvLigne = 0;
 
         for(Map.Entry entry: d.entrySet()){
         	
             if(mots[0].equals(entry.getValue())){
             	
-                nouvColonne = (int) entry.getKey();
+                nouvLigne = (int) entry.getKey();
                 break; //breaking because its one to one map
             }
         }
@@ -294,7 +300,7 @@ public class Personnage {
         this.Endurance = value;
     }
 
-    int getPointDeVIe() {
+    int getPointDeVie() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.PointDeVie;
     }
