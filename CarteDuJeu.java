@@ -1,4 +1,3 @@
-package projetTutore;
 
 import java.util.Scanner;
 import java.util.Arrays;
@@ -79,16 +78,20 @@ public class CarteDuJeu {
     }
     
     
-    public boolean seDeplacer(Personnage p) {
+    public void seDeplacer(Personnage p) {
     	
     	if (p.getPointAction() >= 2) {
+    		System.out.println();
+    		System.out.println();
+    		System.out.println();
     	    System.out.println("Saisissez la case où vous voulez vous déplacer");
     	    System.out.println("La lettre pour vous déplacer à gauche ou à droite");
     	    System.out.println("et le numéro de la ligne pour vous déplacer en haut ou en bas (Exemple: B-5)");
     	    
+    	    this.addTab(p.getLigne(), p.getColonne(), null);
+    	    
     	    Scanner sc1 = new Scanner(System.in);
     	    String position = sc1.nextLine();
-    	    sc1.close();
     	    p.convertPosition(position, this.dico);
     	    
     	    this.addTab(p.getLigne(), p.getColonne(), p);
@@ -97,12 +100,14 @@ public class CarteDuJeu {
     		int nouvPA = PA - 2;
     		p.setPointAction(nouvPA);
     		
-    		return true;
+    		System.out.println();
+    		System.out.println();
+    		System.out.println();
+    		this.afficherCarte();
     	}
     	
     	else {
     		System.out.println("Vous n'avez pas assez de Point d'Action, veuiller choisir une autre action ou attendre d'avoir assez de point");
-    		return false;
     	}
     }
     public Cases[][] getTabcases() {
