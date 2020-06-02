@@ -1,3 +1,5 @@
+package projetTutore;
+
 
 public class PNJ extends Personnage {
     private boolean Jouable;

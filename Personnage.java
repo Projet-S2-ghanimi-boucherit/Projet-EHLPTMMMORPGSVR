@@ -1,3 +1,5 @@
+package projetTutore;
+
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -18,7 +20,7 @@ public class Personnage {
     
     private int PointDeVie;
     private int Xp;
-    private ArrayList<Objet> SacObjet;
+    private ArrayList<Object> SacObjet;
     
     private int ligne;
     private int colonne;
@@ -44,7 +46,7 @@ public class Personnage {
     	this.Xp = 0;
     	this.PointDeVie = 98;
     	
-    	SacObjet = new ArrayList<Objet>();
+    	SacObjet = new ArrayList<Object>();
     }
     
     public int randNum(int min, int max) {
@@ -55,11 +57,11 @@ public class Personnage {
     
     // METHODES //
     
-    public void equiper(Objet obj){
+    public void equiper(Object obj){
     	this.SacObjet.add(obj);
     	
     }
-    
+
     public void soin() {
     	if (this.getPointDeVie() >= 95 && this.getPointDeVie() <= 99) {
     		int dif = 100 - this.getPointDeVie();
@@ -82,7 +84,10 @@ public class Personnage {
     
 
 	public boolean attaquer() {
-    	if (getPointAction() >= 3) {
+    	if (getPointAction() >= 3 ) {
+    		if () {
+    			
+    		}
     		
     		return true;
     	}
@@ -226,7 +231,7 @@ public class Personnage {
     	return this.colonne;
     }
     
-    public ArrayList<Objet> getSacObjet () {
+    public ArrayList<Object> getSacObjet () {
     	return this.SacObjet;
     }
 
