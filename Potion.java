@@ -1,3 +1,5 @@
+package projetTutore;
+
 
 
 public class Potion extends Objet {
