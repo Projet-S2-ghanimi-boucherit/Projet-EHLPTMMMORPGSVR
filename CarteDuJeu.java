@@ -1,3 +1,5 @@
+package projetTutore;
+
 
 import java.util.Scanner;
 import java.util.Arrays;
@@ -40,12 +42,17 @@ public class CarteDuJeu {
     	Personnage Monstre2 = new PNJ();
     	this.addTab(1, 10, Monstre2);
     	
+    	Potion p1= new Potion("superpotion","soin");
+    	this.addTab(1,0,p1);
+    	
     }
     
     public void addTab (int ligne, int colonne, Object nouvObj){
     	this.Tabcases[colonne][ligne].setObj(nouvObj);
+   
     }
     
+ 
     public void afficherCarte() {
     	System.out.println("     ####################################################");
     	
@@ -62,6 +69,13 @@ public class CarteDuJeu {
             	 else if (this.Tabcases[i][j].getObj() instanceof PNJ){
             		 System.out.print("    M   ");
             	 }
+            	 else if( this.Tabcases[i][j].getObj() instanceof Potion) {
+            		 System.out.print("    S   ");
+            		 
+            		 
+            	 }
+            		 
+            	 
             	 else {
             		 System.out.print("        ");
             	 }
