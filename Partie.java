@@ -1,3 +1,5 @@
+package projetTutore;
+
 
 
 import java.io.BufferedOutputStream;
@@ -52,7 +54,7 @@ public class Partie {
     	
     	//try {	System.out.println();
     			System.out.println();
-    			System.out.println("Veuillez choisir une action parmis, Attaquer : (A), Déplacer : (D), Utiliser un objet : (O).");
+    			System.out.println("Veuillez choisir une action parmis, Attaquer : (A), Déplacer : (D), Utiliser un objet : (O), Ramasser : (R).");
 
     			sc = new Scanner(System.in);
     			String A = sc.nextLine();
@@ -78,6 +80,18 @@ public class Partie {
         			
     				this.getPerso().useObject(i);
     			}
+    			else if (A.equals("R")) {
+    				this.Ramasser(this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].getObj());
+    				this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].setObj(null) ; 
+    				
+    				this.carte.afficherCarte();
+    				System.out.println();
+    				System.out.println();
+    				System.out.println();
+
+    				System.out.println("Objet ramassé");
+    				
+    			}
     			this.getPerso().affichePerso();
     			this.ChoixAction();
     			//}
@@ -88,7 +102,13 @@ public class Partie {
     		//System.out.println("ou bien l'index de l'objet placer en paramètre ne correspond à aucun objet du sac");
     	//}
     }
-    
+    public void Ramasser(Object obj) {
+    	if(this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].getObj() instanceof Objet) {
+    		this.perso.equiper(obj);
+    	}
+    	
+    	
+    }
 	public void Charger() {
 
 
