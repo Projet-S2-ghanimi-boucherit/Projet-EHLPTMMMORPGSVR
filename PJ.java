@@ -27,7 +27,6 @@ public class PJ extends Personnage {
     boolean getJouable() {
         return this.Jouable;
     }
-
  
 
 }

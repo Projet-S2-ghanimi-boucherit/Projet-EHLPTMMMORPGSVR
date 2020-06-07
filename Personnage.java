@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Personnage {
     private int PointAction;
-    
+    private  CarteDuJeu Carte;
     private int Force;
     private int Adresse;
     private int Endurance;
@@ -18,7 +18,7 @@ public class Personnage {
     private int Attaque;
     private int Defense;
     
-    private int PointDeVie;
+    protected int PointDeVie;
     private int Xp;
     private ArrayList<Object> SacObjet;
     
@@ -83,24 +83,10 @@ public class Personnage {
     }
     
 
-	public boolean attaquer() {
-    	if (getPointAction() >= 3 ) {
-    		if () {
-    			
-    		}
-    		
-    		return true;
-    	}
-    	
-    	else {
-    		System.out.println("Vous n'avez pas assez de Point d'Action, veuiller choisir une autre action ou attendre d'avoir assez de point");
-    		return false;
-    	}
-    }
     
     public void useObject(int i) {
     	
-    	if (this.SacObjet.contains(this.SacObjet.get(i)) && this.SacObjet.get(i).getType() == "soin") {
+    	if (this.SacObjet.contains(this.SacObjet.get(i)) && this.SacObjet.get(i) == "soin") {
     		int PV = getPointDeVie();
     		
     		if (PV != 100) {
@@ -304,17 +290,15 @@ public class Personnage {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.Endurance = value;
     }
-
-    int getPointDeVie() {
+	
+    public void setPointDeVIe(int value) {
+		this.PointDeVie = value;
+		
+	}
+    public int getPointDeVie() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.PointDeVie;
     }
-
-    void setPointDeVIe(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.PointDeVie = value;
-    }
-
 
     int getXp() {
         // Automatically generated method. Please delete this comment before entering specific code.
@@ -325,5 +309,11 @@ public class Personnage {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.Xp = value;
     }
+
+	public void setPointDeVIe1(int value) {
+		this.PointDeVie=value;
+	}
+		// TODO Auto-generated method stub
+		
+	}
     
-} 
