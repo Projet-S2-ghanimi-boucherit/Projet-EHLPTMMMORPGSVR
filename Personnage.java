@@ -1,4 +1,3 @@
-package projetTutore;
 
 
 import java.util.ArrayList;
@@ -9,7 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Personnage {
     private int PointAction;
-    private  CarteDuJeu Carte;
+    private Arme arme;
+    
     private int Force;
     private int Adresse;
     private int Endurance;
@@ -38,15 +38,23 @@ public class Personnage {
     		degreTotal = this.Force + this.Adresse + this.Endurance;
     	}
     	
+    	Arme Epée = new Arme("Epée",5);
+    	
+    	this.arme = Epée;
+    	
+    	Objet soin= new Potion("soin1", "soin");
+    	
     	this.PointAction = 10;
     	this.Initiative = 0;
     	this.Attaque = 0;
     	this.Defense = 0;
     	
     	this.Xp = 0;
-    	this.PointDeVie = 98;
+    	this.PointDeVie = 93;
     	
     	SacObjet = new ArrayList<Object>();
+    	SacObjet.add(this.arme);
+    	SacObjet.add(soin);
     }
     
     public int randNum(int min, int max) {
@@ -61,6 +69,9 @@ public class Personnage {
     	this.SacObjet.add(obj);
     	
     }
+    
+   
+    		
 
     public void soin() {
     	if (this.getPointDeVie() >= 95 && this.getPointDeVie() <= 99) {
@@ -117,11 +128,12 @@ public class Personnage {
     	
     	String newline=System.getProperty("line.separator");
     	String s;
-    	s = newline + "Vos caractéristiques :" + newline + "- Force: " + this.Force + newline +"- Adresse : " + this.Adresse + newline +"- Endurance: " + this.Endurance + newline +"+ Initiative: " + this.Initiative + newline +"+ Attaque: " + this.Attaque + newline +"+ Defence: " + this.Defense + newline + newline +"Vos objets équipés : " + this.SacObjet ;
+    	s = newline + "Vos points d'action: " + this.PointAction + newline + "Vos caractéristiques :" + newline + "- Force: " + this.Force + newline +"- Adresse : " + this.Adresse + newline +"- Endurance: " + this.Endurance + newline +"+ Initiative: " + this.Initiative + newline +"+ Attaque: " + this.Attaque + newline +"+ Defence: " + this.Defense + newline + newline +"Vos objets équipés : " + this.SacObjet ;
     	System.out.println();
 		System.out.println();
     	System.out.println(s);
     	this.AfficherPointDeVie();
+    	
     	
     }
 
@@ -145,8 +157,8 @@ public class Personnage {
             }
         }
         
-        setLigne(nouvLigne);
-        setColonne(nouvColonne);
+        this.setLigne(nouvLigne);
+        this.setColonne(nouvColonne);
     }
     
 
@@ -309,11 +321,14 @@ public class Personnage {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.Xp = value;
     }
-
-	public void setPointDeVIe1(int value) {
-		this.PointDeVie=value;
+    
+	public void setArme(Arme nouvArme) {
+		this.arme = nouvArme;
 	}
-		// TODO Auto-generated method stub
+	
+	public Arme getArme() {
+		return this.arme;
+	}
 		
-	}
+}
     

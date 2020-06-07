@@ -1,4 +1,3 @@
-package projetTutore;
 
 
 public class PNJ extends Personnage {
@@ -24,12 +23,4 @@ public class PNJ extends Personnage {
     boolean getJouable() {
         return this.Jouable;
     }
-
-	public void setPointDeVIe(int value) {
-		this.PointDeVie = value;
-		
-	}
-
-
-    
- }
+}
