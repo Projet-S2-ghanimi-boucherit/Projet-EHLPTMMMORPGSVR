@@ -1,5 +1,3 @@
-package projetTutore;
-
 
 import java.util.Scanner;
 import java.util.Arrays;
@@ -10,7 +8,7 @@ public class CarteDuJeu {
     private Cases[][] Tabcases;
     private String[] AlphColonne = { "A", "B", "C", "D", "E", "F"};
     private int[] NumLigne;
-    private int n = 30;
+    private int n = 11;
     private Hashtable<Integer, String> dico;
 
     public CarteDuJeu() {
@@ -36,11 +34,15 @@ public class CarteDuJeu {
     	 }
     	 
     	 
-    	Personnage Monstre1 = new PNJ();
+    	PNJ Monstre1 = new PNJ();
     	this.addTab(5, 4, Monstre1);
     	
-    	Personnage Monstre2 = new PNJ();
+    	PNJ Monstre2 = new PNJ();
     	this.addTab(1, 10, Monstre2);
+    	
+    	PNJ Monstre3 = new PNJ();
+    	Monstre3.setPointDeVIe(10);
+    	this.addTab(2, 0, Monstre3);
     	
     	Potion p1= new Potion("superpotion","soin");
     	this.addTab(1,0,p1);
