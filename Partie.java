@@ -25,6 +25,8 @@ import java.util.concurrent.ExecutionException;
 public class Partie {
 	
 	private int numPartie;
+	private Personnage monstre;
+	private Arme arme;
 	private Personnage perso;
     private CarteDuJeu carte;
     private Scanner sc;
@@ -61,7 +63,7 @@ public class Partie {
     			
     			if (A.equals("A")) {
     				
-    				this.getPerso().attaquer();
+    				this.getPerso().
     			}
     			
     			else if (A.equals("D")) {
@@ -109,7 +111,46 @@ public class Partie {
     	
     	
     }
-	public void Charger() {
+    
+    public void attaquer() {
+    	if (this.perso.getPointAction() >= 3 ) {
+    		if (this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()] == (this.carte.getTabcases()[this.monstre.getColonne()+1][this.monstre.getLigne()])){
+    			monstre.setPointDeVIe(monstre.getPointDeVie()-arme.getDegats());
+    			
+    			
+    		}
+    		else if (this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()] == (this.carte.getTabcases()[this.monstre.getColonne()-1][this.monstre.getLigne()]) ) {
+    			monstre.setPointDeVIe(monstre.getPointDeVie()-arme.getDegats());
+    			
+    	    	
+        	}
+    		
+    		else if (this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()] == (this.carte.getTabcases()[this.monstre.getColonne()][this.monstre.getLigne()+1]) ) {
+    			monstre.setPointDeVIe(monstre.getPointDeVie()-arme.getDegats());
+    			
+    	    	
+        	}
+    		else if (this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()] == (this.carte.getTabcases()[this.monstre.getColonne()][this.monstre.getLigne()-1]) ) {
+    			monstre.setPointDeVIe(monstre.getPointDeVie()-arme.getDegats());
+    			
+    	    	
+        	}
+    		
+    	
+    	
+    	else {
+    		System.out.println("Vous n'avez pas assez de Point d'Action, veuiller choisir une autre action ou attendre d'avoir assez de point");
+    		
+    	
+        }
+    	
+    }
+  }
+    		
+    		
+    		
+    		
+    public void Charger() {
 
 
 		try{
