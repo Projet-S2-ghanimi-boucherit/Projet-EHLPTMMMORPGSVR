@@ -97,10 +97,10 @@ public class Personnage {
     
     public void useObject(int i) {
     	
-    	if (this.SacObjet.contains(this.SacObjet.get(i)) && this.SacObjet.get(i) == "soin") {
+    	if (this.SacObjet.contains(this.SacObjet.get(i))) {
     		int PV = getPointDeVie();
     		
-    		if (PV != 100) {
+    		if (PV < 100) {
     			this.soin();
     		}
     		else {
