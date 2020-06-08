@@ -105,6 +105,8 @@ public class Partie {
 		if (this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].getObj() instanceof PNJ){
 			((Personnage) this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].getObj()).setPointDeVIe(((Personnage) this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].getObj()).getPointDeVie()-this.perso.getArme().getDegats());
 			this.perso.setPointAction(this.perso.getPointAction()-3);
+			this.carte.afficherCarte();
+			System.out.println();
 			System.out.println("PV du monstre actuellement: "+((Personnage) this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].getObj()).getPointDeVie());
 			 if (((Personnage) this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].getObj()).getPointDeVie() == 0){
 				 this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].setObj(null);
@@ -117,6 +119,8 @@ public class Partie {
 		else if (this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].getObj() instanceof PNJ) {
 			((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].getObj()).setPointDeVIe(((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].getObj()).getPointDeVie()-this.perso.getArme().getDegats());
 			this.perso.setPointAction(this.perso.getPointAction()-3);
+			this.carte.afficherCarte();
+			System.out.println();
 			System.out.println("PV du monstre actuellement: "+((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].getObj()).getPointDeVie());
 			if (((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].getObj()).getPointDeVie() == 0){
 				 this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].setObj(null);
@@ -129,6 +133,8 @@ public class Partie {
 		else if (this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()-1].getObj() instanceof PNJ) {
 			((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()-1].getObj()).setPointDeVIe(((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()-1].getObj()).getPointDeVie()-this.perso.getArme().getDegats());
 			this.perso.setPointAction(this.perso.getPointAction()-3);
+			this.carte.afficherCarte();
+			System.out.println();
 			System.out.println("PV du monstre actuellement: "+((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()-1].getObj()).getPointDeVie());
 			if (((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()-1].getObj()).getPointDeVie() == 0){
 				 this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()-1].setObj(null);
@@ -140,6 +146,8 @@ public class Partie {
 		else if (this.carte.getTabcases()[this.perso.getColonne()-1][this.perso.getLigne()].getObj() instanceof PNJ ) {
 			((Personnage) this.carte.getTabcases()[this.perso.getColonne()-1][this.perso.getLigne()].getObj()).setPointDeVIe(((Personnage) this.carte.getTabcases()[this.perso.getColonne()-1][this.perso.getLigne()].getObj()).getPointDeVie()-this.perso.getArme().getDegats());
 			this.perso.setPointAction(this.perso.getPointAction()-3);
+			this.carte.afficherCarte();
+			System.out.println();
 			System.out.println("PV du monstre actuellement: "+((Personnage) this.carte.getTabcases()[this.perso.getColonne()-1][this.perso.getLigne()].getObj()).getPointDeVie());
 			if (((Personnage) this.carte.getTabcases()[this.perso.getColonne()-1][this.perso.getLigne()].getObj()).getPointDeVie() == 0){
 				 this.carte.getTabcases()[this.perso.getColonne()-1][this.perso.getLigne()].setObj(null);
