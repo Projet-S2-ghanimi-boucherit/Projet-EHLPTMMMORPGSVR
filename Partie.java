@@ -52,6 +52,7 @@ public class Partie {
     				if (this.perso.getPointAction() >= 3 ) {
     				
     					this.attaquer();
+    					
     				}
     				else {
     					System.out.println("Vous n'avez pas assez de PA");
@@ -61,6 +62,7 @@ public class Partie {
     			else if (A.equals("D")) {
     				if (this.perso.getPointAction() >= 2) {
     					this.getCarte().seDeplacer(this.getPerso());
+    					this.carte.afficherCarte();
     				}
     				else {
     					System.out.println("Vous n'avez pas assez de PA");
@@ -107,6 +109,7 @@ public class Partie {
 			 if (((Personnage) this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].getObj()).getPointDeVie() == 0){
 				 this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].setObj(null);
 				 this.carte.afficherCarte();
+				 System.out.println();
 				 System.out.println("monstre abattu");
 				 
 			 }
@@ -116,8 +119,9 @@ public class Partie {
 			this.perso.setPointAction(this.perso.getPointAction()-3);
 			System.out.println("PV du monstre actuellement: "+((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].getObj()).getPointDeVie());
 			if (((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].getObj()).getPointDeVie() == 0){
-				 this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].setObj(null);
+				 this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()+1].setObj(null);
 				 this.carte.afficherCarte();
+				 System.out.println();
 				 System.out.println("monstre abattu");
 	    	
     	}
@@ -127,8 +131,9 @@ public class Partie {
 			this.perso.setPointAction(this.perso.getPointAction()-3);
 			System.out.println("PV du monstre actuellement: "+((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()-1].getObj()).getPointDeVie());
 			if (((Personnage) this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()-1].getObj()).getPointDeVie() == 0){
-				 this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].setObj(null);
+				 this.carte.getTabcases()[this.perso.getColonne()][this.perso.getLigne()-1].setObj(null);
 				 this.carte.afficherCarte();
+				 System.out.println();
 				 System.out.println("monstre abattu");
 	    	
     	}
@@ -137,8 +142,9 @@ public class Partie {
 			this.perso.setPointAction(this.perso.getPointAction()-3);
 			System.out.println("PV du monstre actuellement: "+((Personnage) this.carte.getTabcases()[this.perso.getColonne()-1][this.perso.getLigne()].getObj()).getPointDeVie());
 			if (((Personnage) this.carte.getTabcases()[this.perso.getColonne()-1][this.perso.getLigne()].getObj()).getPointDeVie() == 0){
-				 this.carte.getTabcases()[this.perso.getColonne()+1][this.perso.getLigne()].setObj(null);
+				 this.carte.getTabcases()[this.perso.getColonne()-1][this.perso.getLigne()].setObj(null);
 				 this.carte.afficherCarte();
+				 System.out.println();
 				 System.out.println("monstre abattu");
 			}
 		
